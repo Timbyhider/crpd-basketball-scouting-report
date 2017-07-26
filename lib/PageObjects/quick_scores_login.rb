@@ -1,19 +1,18 @@
+require 'page-object'
 
-def QuickScoresLogin
-    include 'PageObject'
+class QuickScoresLogin
+    include PageObject
 
     page_url = "https://www.quickscores.com/Orgs/Login.php?OrgDir=crpdsports"
 
-    button(:submit, :id => 'Submit', :value => 'Submit')
+    button(:submit, :name => 'Submit', :value => 'Submit')
 
     text_field(:username, :id => 'username')
-    text_field(:password, :id => 'EnteredPassword')
+    text_field(:password, :name => 'EnteredPassword')
 
     def login_to_quick_scores(user, pass)
         self.username = user
         self.password = pass
         self.submit
     end
-
-
 end
